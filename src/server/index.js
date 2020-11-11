@@ -1,5 +1,6 @@
 const dotenv = require('dotenv');
 dotenv.config();
+const dataCollected = [];
 var path = require('path')
 const https = require('follow-redirects').https
 const express = require('express')
@@ -14,21 +15,24 @@ const txtToTest = "People are planning to drive more in future than they did bef
 const app = express()
 app.use(express.static('dist'))
 app.use(cors())
-app.use(bodyParser.json())
+app.use(bodyParser.text())
+// app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     extended: true
 }))
 
-const getMeanCloud = async (URL) => {
-    console.log( "URL ", URL);
+const getMCData = async (URL) => {
+    // console.log( "**** URL we're using ****", URL);
     const res = await fetch(URL)
+    console.log("res is ",res)
     try {
         const data = await res.json();
-        console.log("Data returned in fetch; ",res);
+        // await console.log("Data returned in fetch; ",data);
         return data;
     } catch(error) {
         console.log('Data error on Meaning Cloud :', error);
     }
+    return res.json();
     }
 
 
@@ -37,8 +41,15 @@ function getURL() {
 
 }
 
-const getData =  async () => {
-    const dataReturned = await getMeanCloud(getURL());
+// async function getData() {
+//     const dataReturned = await getMeanCloud(getURL());
+//     console.log("getData function returned data: ", dataReturned);
+//     return dataReturned;
+// }
+
+
+const getData =  async () =>  {
+    const dataReturned = await getMCData(getURL())
     console.log("getData function returned data:", dataReturned);
     return dataReturned
 }
@@ -57,7 +68,22 @@ app.listen(port, function () {
 })
 
 app.get('/test', function (req, res) {
-    res.send(getData())
+    getData()
+        .then(function(data) {
+            res.send(data)
+        })
+    
 })
 
-// app.get('')
+app.post('/process', processRequest);
+
+
+
+
+
+{
+    getData()
+    .then(function(data) {
+        res.send()
+    })
+})
