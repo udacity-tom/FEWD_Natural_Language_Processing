@@ -48,6 +48,11 @@ function getURL() {
 // }
 
 
+///function 
+
+
+
+
 const getData =  async () =>  {
     const dataReturned = await getMCData(getURL())
     // console.log("getData function returned data:", dataReturned);
@@ -77,27 +82,27 @@ app.get('/test', function (req, res) {
     
 })
 
-app.post('/process', processRequest);
+// app.post('/process', processRequest);
 
 // function processRequest(req, res){
 //     console.log("req.body", req.body)
 // }
 
 
-function processRequest(req, res){
-    const newRequest = {} = req.body
-    getData()
-    .then(function(data) {
+// function processRequest(req, res){
+//     const newRequest = {} = req.body
+//     getData()
+//     .then(function(data) {
         
-    })
-    .then(function(data){
-        dataCollected.push({newRequest: data, dataReturned: data})
-    })
-    // .then(dataCollected.push(newRequest)
-    // .then(dataCollected.push('newRequest':newRequest)
-    // , 'dataReturned':data))
-    console.log("Current dataCollected ->", newRequest)
-}
+//     })
+//     .then(function(data){
+//         dataCollected.push({newRequest: data, dataReturned: data})
+//     })
+//     // .then(dataCollected.push(newRequest)
+//     // .then(dataCollected.push('newRequest':newRequest)
+//     // , 'dataReturned':data))
+//     console.log("Current dataCollected ->", newRequest)
+// }
 
 
 
