@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({
 const getMCData = async (URL) => {
     // console.log( "**** URL we're using ****", URL);
     const res = await fetch(URL)
-    console.log("res is ",res)
+    // console.log("res is ",res)
     try {
         const data = await res.json();
         // await console.log("Data returned in fetch; ",data);
@@ -50,7 +50,7 @@ function getURL() {
 
 const getData =  async () =>  {
     const dataReturned = await getMCData(getURL())
-    console.log("getData function returned data:", dataReturned);
+    // console.log("getData function returned data:", dataReturned);
     return dataReturned
 }
 
@@ -70,20 +70,41 @@ app.listen(port, function () {
 app.get('/test', function (req, res) {
     getData()
         .then(function(data) {
+            // processRequest(data)
             res.send(data)
         })
+        
     
 })
 
 app.post('/process', processRequest);
 
+// function processRequest(req, res){
+//     console.log("req.body", req.body)
+// }
 
 
-
-
-{
+function processRequest(req, res){
+    const newRequest = {} = req.body
     getData()
     .then(function(data) {
-        res.send()
+        
     })
-})
+    .then(function(data){
+        dataCollected.push({newRequest: data, dataReturned: data})
+    })
+    // .then(dataCollected.push(newRequest)
+    // .then(dataCollected.push('newRequest':newRequest)
+    // , 'dataReturned':data))
+    console.log("Current dataCollected ->", newRequest)
+}
+
+
+
+
+// {
+//     getData()
+//     .then(function(data) {
+//         res.send()
+//     })
+// })
