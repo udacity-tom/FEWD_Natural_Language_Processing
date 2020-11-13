@@ -9,6 +9,9 @@ const TerserPlugin = require('terser-webpack-plugin')
 module.exports = {
     entry: './src/client/index.js',
     mode: 'production',
+    optimization: {
+        minimizer: [new TerserPlugin({}), new OptimizeCssAssetsPlugin({})],
+    },
     module: {
         rules: [
             {
@@ -26,6 +29,8 @@ module.exports = {
         new HtmlWebPackPlugin({
             template: "./src/client/views/index.html",
             filename: "./index.html",
-        })
+        }),
+        new MiniCssExtractPlugin({filename: '[name].css'})
+        // new WorkboxPlugin.GenerateSW()
     ]
 }
