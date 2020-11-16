@@ -1,7 +1,16 @@
+$background-color: #E76A4B;
+$text-color: #264653;
+$input-form: #eed595;
+$white-color: #000000;
+
+
+
 body {
+    background-color: $background-color;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-size: 16px;
 }
 
 main {

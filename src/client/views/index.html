@@ -13,24 +13,38 @@
     <body>
 
         <header>
-            <div class="">
-                Logo
+            <div class="headerTitle">
+                Natural Language Processing
             </div>
-            <div class="">
-                navigation
-            </div>
+            <nav>
+                <div class="nav">
+                    Home
+                </div>
+                <div class="nav">
+                    About
+                </div>
+             </nav>
         </header>
-
         <main>
             <section>
-                <form class="" onsubmit="return handleSubmit(event)">
-                    <select name="inputType" id="input-type">
+                <form class="form" >
+                    <!-- <form class="form" onsubmit="return handleSubmit(event)"> -->
+                        <div class="">
+                            Text<label class="switch" onChange="updateUI()">
+                        <input type ="checkbox">
+                        <span class="slider round">
+                        </span>
+                    </label>URL
+                </div>
+                    
+                    <!-- <input type="switch"> -->
+                    <!-- <select name="inputType" id="input-type">
                         <option value="">Please select an option</option>
-                        <option value="web">Web Link</option>
+                        <option value="web" onchange="">Web Link</option>
                         <option value="text">Plain Text</option>
-                    </select>
+                    </select> -->
 
-                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
+                    <input id="name" type="URL" required oninvalid="You must type a valid URL!" name="input" value="" onblur="onBlur()" placeholder="http://URL-Universal Resource Locator">
                     <input type="submit" name="" value="submit" onclick="return handleSubmit(event)" onsubmit="return handleSubmit(event)">
                 </form>
             <section>
