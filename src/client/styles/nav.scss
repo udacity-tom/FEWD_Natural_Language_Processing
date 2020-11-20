@@ -1,0 +1,36 @@
+@mixin displayShadow($dispersion) {
+    box-shadow: 0 10px $dispersion black;
+}
+
+#nav {
+    padding: 3vw;
+    font-size: 1.5em;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-self: center;
+    text-decoration: none;
+}
+
+.nav-link {
+    text-decoration: none;
+    color:  #e3ffff;;
+    padding: 1vw;
+    &:hover {
+        color: #e16036;
+        background-color: #ffffff;
+        @include displayShadow(40px);
+        // box-shadow: 0 10px 20px #e3170a;
+        // box-shadow: 0 10px 20px black;
+        border-radius: 5px;
+    }
+
+}
+
+// .nav-link:hover {
+//     color: #e16036;
+//     background-color: #ffffff;
+//     box-shadow: 0 10px 20px #e3170a;
+//     border-radius: 5px;
+// }

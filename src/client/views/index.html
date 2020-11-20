@@ -2,51 +2,64 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Test</title>
-        <link rel="stylesheet" href="/styles/resets.css">
-        <link rel="stylesheet" href="/styles/base.css">
-        <link rel="stylesheet" href="/styles/header.css">
-        <link rel="stylesheet" href="/styles/form.css">
-        <link rel="stylesheet" href="/styles/footer.css">
+        <title>NLP Today!</title>
     </head>
 
     <body>
 
         <header>
             <div class="headerTitle">
-                Natural Language Processing
+                
             </div>
-            <nav>
-                <div class="nav">
+            <nav id="nav">
+                <div class="nav-link">
                     Home
                 </div>
-                <div class="nav">
+                <div class="nav-link">
                     About
                 </div>
              </nav>
         </header>
         <main>
-            <section>
+            <h1 class="page_title">Natural Language Processing</h1>
+            <section class="introText">
+                <p>Intro Text </p>
+                <p>
+                    <section class="inputform">
                 <form class="form" >
                     <!-- <form class="form" onsubmit="return handleSubmit(event)"> -->
                         <div class="">
-                            Text<label class="switch" onChange="updateUI()">
-                        <input type ="checkbox">
-                        <span class="slider round">
-                        </span>
-                    </label>URL
+                        <table>
+                        
+                        <tbody>
+                        <tr>
+                            <td class="switch-text"><label>Text</label></td><td class="switch-text"><label class="switch" >
+                                <input type ="checkbox" id="inputAreaType" onClick="return jslib.changeInputArea()">
+                                <span class="slider round"></span></td>
+                            </label><td class="switch-text">URL</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
-                    
                     <!-- <input type="switch"> -->
                     <!-- <select name="inputType" id="input-type">
                         <option value="">Please select an option</option>
                         <option value="web" onchange="">Web Link</option>
                         <option value="text">Plain Text</option>
                     </select> -->
+                <div class="inputURL" style="display: none">
+                    <input id="url" type="URL" required  name="input"  placeholder="http://URL-Universal Resource Locator">
+                    <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
 
-                    <input id="name" type="URL" required oninvalid="You must type a valid URL!" name="input" value="" onblur="onBlur()" placeholder="http://URL-Universal Resource Locator">
-                    <input type="submit" name="" value="submit" onclick="return handleSubmit(event)" onsubmit="return handleSubmit(event)">
+                </div>
+
+
+                <div class="inputText" style="display: block">
+                <input id="text" type="textarea" rows="5" cols="60" placeholder="Input text">
+                <input type="submit" name="" value="submit" onclick="return jslib.handleSubmit(event)" onsubmit="return handleSubmit(event)">
+            </div>
                 </form>
+            </section>
             <section>
 
             <section>
@@ -54,10 +67,21 @@
                 <div id="results"></div>
             </section>
         </main>
-
         <footer>
-            <p>This is a footer</p>
+            <p class="logoText">This website uses the APIs from </p>
+            <a href="https://www.meaningcloud.com/">
+                <!-- <img src={meaningCloudLogo} alt="meaning cloud logo"> -->
+                <img class="logo" src='./img/meaning-cloud-logo.png' alt="meaning cloud logo">
+            </a>
         </footer>
 
+
     </body>
+    <!-- <script>
+        function changeInputArea(){
+            let currentInput = document.getElementById("switch-text");
+            console.log("currentInput" currentInput);
+            // let currentShow = document.getElementById("")
+        }
+    </script> -->
 </html>

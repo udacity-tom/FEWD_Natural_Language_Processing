@@ -1,9 +1,10 @@
 
 form {
-    border: 1px solid #545454;
+    // border: 1px solid #545454;
     border-radius: 3px;
     padding: 40px;
     margin-top: 6em;
+    margin: 0 auto;
 }
 
 input {
@@ -21,7 +22,29 @@ select {
 }
 
 //CSS Table for switch-text allignment
+// form {
+//     display: table;
+//     p {
+//         display: table-row;
+//     }
+//     label {
+//         display: table-cell;
+//     }
+//     input {
+//         display: table-cell;
+//     }
 
+// }
+
+.switch-text {
+    font-size: 2em;
+    text-align: center;
+    padding: 5px;
+
+}
+
+$buttonHeight: 34px;
+$buttonCenter: 26px;
 
 
 
@@ -32,7 +55,8 @@ select {
     position: relative;
     display: inline-block;
     width: 60px;
-    height: 34px;
+    height: $buttonHeight;
+    text-align: center;
 }
 
 .switch input {
@@ -56,8 +80,8 @@ select {
 .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
+    height: $buttonCenter;
+    width: $buttonCenter;
     left: 4px;
     bottom: 4px;
     background-color: white;
@@ -74,13 +98,13 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+    -webkit-transform: translateX($buttonCenter);
+    -ms-transform: translateX($buttonCenter);
+    transform: translateX($buttonCenter);
 }
 
 .slider.round {
-    border-radius: 34px;
+    border-radius: $buttonHeight;
 }
 .slider.round:before {
     border-radius: 50%;

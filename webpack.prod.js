@@ -4,6 +4,8 @@ const HtmlWebPackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+
+// const 
 // const WorkboxPlugin = require('workbox-webpack-plugin')
 
 module.exports = {
@@ -14,6 +16,7 @@ module.exports = {
     },
     module: {
         rules: [
+
             {
                 test: '/\.js$/',
                 exclude: /node_modules/,
@@ -22,7 +25,18 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
-            }
+            },
+            {
+                test: /\.(gif|png|jpe?g|svg)$/i,
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    outputPath: 'img/',
+                }
+    
+            },
+
+            
         ]
     },
     plugins: [
@@ -32,5 +46,9 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({filename: '[name].css'})
         // new WorkboxPlugin.GenerateSW()
-    ]
+    ],
+    output: {
+        libraryTarget: 'var', 
+        library: 'jslib'
+    },
 }
