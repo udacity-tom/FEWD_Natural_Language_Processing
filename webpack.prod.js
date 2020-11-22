@@ -11,12 +11,15 @@ const TerserPlugin = require('terser-webpack-plugin')
 module.exports = {
     entry: './src/client/index.js',
     mode: 'production',
+    output: {
+        libraryTarget: 'var', 
+        library: 'Client'
+    },
     optimization: {
         minimizer: [new TerserPlugin({}), new OptimizeCssAssetsPlugin({})],
     },
     module: {
         rules: [
-
             {
                 test: '/\.js$/',
                 exclude: /node_modules/,
@@ -47,8 +50,5 @@ module.exports = {
         new MiniCssExtractPlugin({filename: '[name].css'})
         // new WorkboxPlugin.GenerateSW()
     ],
-    output: {
-        libraryTarget: 'var', 
-        library: 'jslib'
-    },
+
 }

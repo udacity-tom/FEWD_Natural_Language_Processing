@@ -34,7 +34,7 @@
                         <tbody>
                         <tr>
                             <td class="switch-text"><label>Text</label></td><td class="switch-text"><label class="switch" >
-                                <input type ="checkbox" id="inputAreaType" onClick="return jslib.changeInputArea()">
+                                <input type ="checkbox" id="inputAreaType" onClick="return Client.changeInputArea(event)">
                                 <span class="slider round"></span></td>
                             </label><td class="switch-text">URL</td>
                         </tr>
@@ -47,21 +47,19 @@
                         <option value="web" onchange="">Web Link</option>
                         <option value="text">Plain Text</option>
                     </select> -->
-                <div class="inputURL" style="display: none">
+                <div class="inputURL" id="inputURL" style="display: none">
                     <input id="url" type="URL" required  name="input"  placeholder="http://URL-Universal Resource Locator">
                     <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
-
                 </div>
 
 
-                <div class="inputText" style="display: block">
+            <div class="inputText" id="inputText" style="display: block">
                 <input id="text" type="textarea" rows="5" cols="60" placeholder="Input text">
-                <input type="submit" name="" value="submit" onclick="return jslib.handleSubmit(event)" onsubmit="return handleSubmit(event)">
+                <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
             </div>
                 </form>
             </section>
-            <section>
-
+            <!-- <section> --> 
             <section>
                 <strong>Form Results:</strong>
                 <div id="results"></div>

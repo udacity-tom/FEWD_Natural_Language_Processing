@@ -10,6 +10,10 @@ module.exports = {
     mode: 'development',
     devtool: 'source-map',
     stats: 'verbose',
+    output: {
+        libraryTarget: 'var', 
+        library: 'Client',
+    },
     module: {
         rules: [
             {
@@ -21,38 +25,14 @@ module.exports = {
                 test: /\.scss$/,
                 use: ['style-loader', 'css-loader', 'sass-loader']
             },
-            //module loader for image loader
+            //module loader images
             {
             test: /\.(gif|png|jpe?g|svg)$/i,
-            use: [
-                'file-loader', 'url-loader',
-                // Myfile-loader.loader,
-                {
-                    loader: 'image-webpack-loader',
-                    options: {
-                        name: '[path]/img/[name].[ext]',
-                    }
-                    // options: {
-                    //     mozjpeg: {
-                    //         progressive: true,
-                    //         quality: 65
-                    //     },
-                    //     optipng: {
-                    //         enabled: !isDevelopment
-                    //     },
-                    //     pngquant: {
-                    //         quality: '65-90',
-                    //         speed: 4
-                    //     },
-                    //     gifsicle: {
-                    //         interlaced: false
-                    //     },
-                    //     webp: {
-                    //         quality: 75
-                    //     }
-                    // }
-                },
-            ],
+            loader: 'file-loader',
+            options: {
+                name: '[name].[ext]',
+                outputPath: 'img/',
+            }
         },
         ]
     },
@@ -74,8 +54,5 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx', '.scss', '.gif', '.png', '.jpg', 'jpeg', '.svg']
     },
-    output: {
-        libraryTarget: 'var', 
-        library: 'jslib'
-    },
+    
 }

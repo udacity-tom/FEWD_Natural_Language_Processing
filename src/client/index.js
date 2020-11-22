@@ -26,5 +26,5 @@ export {
     checkForName,
     handleSubmit,
     changeInputArea,
-    meaningCloudLogo
+    meaningCloudLogo,
 }
