@@ -1,14 +1,17 @@
-
+$text-color: #219ebc;
 header {
     display: grid;
     grid-template-columns: 50% auto 10%;
     // justify-content: space-between;
+    color: $text-color;
     padding: 10px 40px;
+    background-color: white;
 }
 
 .headerTitle {
     grid-column-start: 1;
-    font-size: 3em;;
+    font-size: 1em;
+    color: $text-color;
 
 }
 

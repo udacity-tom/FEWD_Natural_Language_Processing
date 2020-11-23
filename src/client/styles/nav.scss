@@ -1,11 +1,15 @@
 @mixin displayShadow($dispersion) {
-    box-shadow: 0 10px $dispersion black;
+    box-shadow: 0 5px $dispersion black;
 }
+$nav-color: #219ebc;
+$nav-backg: #ffffff;
+$nav-hover:#ffffff;
+$nav-hover-backg:#219ebc;
 
 #nav {
     padding: 3vw;
     font-size: 1.5em;
-    padding: 5px;
+    padding: 10px;
     display: flex;
     flex-direction: row;
     justify-content: end;
@@ -15,12 +19,12 @@
 
 .nav-link {
     text-decoration: none;
-    color:  #e3ffff;;
+    color:  $nav-color;
     padding: 1vw;
     &:hover {
-        color: #e16036;
-        background-color: #ffffff;
-        @include displayShadow(40px);
+        color: $nav-hover;
+        background-color: $nav-hover-backg;
+        @include displayShadow(30px);
         // box-shadow: 0 10px 20px #e3170a;
         // box-shadow: 0 10px 20px black;
         border-radius: 5px;

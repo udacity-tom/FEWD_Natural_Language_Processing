@@ -1,3 +1,14 @@
+$switch-color:#219ebc;
+$Intro-color: #ffb703;
+$text-color: #219ebc;
+$button-text: #ffffff;
+$button-backg: #4caf50;
+// @mixin makeButton($button-text, $button-bckg) {
+// }
+@mixin displayShadow($dispersion) {
+    box-shadow: 0 5px $dispersion black;
+}
+
 
 form {
     // border: 1px solid #545454;
@@ -8,10 +19,14 @@ form {
 }
 
 input {
-    padding: 5px 20px;
-    width: 100%;
+    // padding: 5px 20px;
+    width: 200%;
     line-height: 16px;
-    margin: 10px 0;
+    // margin: 10px 0;
+    text-align: center;
+    &#url, &#text {
+        margin-left: 50px;
+    }
 }
 
 select {
@@ -21,32 +36,47 @@ select {
     // margin-left: 20px;
 }
 
-//CSS Table for switch-text allignment
-// form {
-//     display: table;
-//     p {
-//         display: table-row;
-//     }
-//     label {
-//         display: table-cell;
-//     }
-//     input {
-//         display: table-cell;
-//     }
-
-// }
 
 .switch-text {
     font-size: 2em;
     text-align: center;
-    padding: 5px;
+    // padding: 5px;
+    // margin: 50px;
+}
 
+.switch-table {
+    margin: 50px;
 }
 
 $buttonHeight: 34px;
 $buttonCenter: 26px;
 
 
+.button {
+    width: 250px;
+    height: 100px;
+    border: none;
+    border-radius: 25px;
+    font-size: 2em;
+    color: $button-text;
+    background-color: $button-backg;
+
+    &:hover {
+        font-size: 2em;
+        color: $button-backg;
+        background-color: $button-text;
+        @include displayShadow(10px);
+    }
+}
+
+.inputURL {
+    display: none;
+}
+
+
+.inputText {
+    display: block;
+}
 
 // For switch definition 
 // Partly taken from 
@@ -90,11 +120,11 @@ $buttonCenter: 26px;
 }
 
 input:checked + .slider {
-    background-color: #2196f3;
+    background-color: $switch-color;
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px $switch-color;
 }
 
 input:checked + .slider:before {
