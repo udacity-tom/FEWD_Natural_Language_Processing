@@ -7,44 +7,49 @@ function handleSubmit(event) {
     const currentTextInput = document.getElementById("text")
     console.log(currentInput.checked)
     if(!currentInput.checked) {
-        console.log("currnetTextInput",currentTextInput.value)
+        console.log("currentTextInput.value: ->",currentTextInput.value)
     }
     
 
 
     
-function sendRequestToProcess(currentTextInput) {
+function sendRequestToProcess() {
+    const currentTextInput = document.getElementById("text").value
     postData('/process', currentTextInput)
 }
 
 
-const postData = async (url = '', data= {}) => {
+const postData = async (url = '', data= {data}) => {
+    console.log("in postData", data, JSON.stringify(data))
     const response = await fetch('http://localhost:8081'+url,{
         method: 'POST',
         mode: 'cors',
         credentials: 'same-origin',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'text/plain',
         },
-        body: JSON.stringify(data),
+        body: (data),
     });
 }
-
-
-
-
     // let formText = document.getElementById('name').value
-
-
     // checkForName(formText)
-
     console.log("::: Form Submitted :::")
-    sendRequestToProcess();
+    sendRequestToProcess(currentTextInput.value);
+    //updateUI()
+
+
+
     // fetch('http://localhost:8081/process?'+currentTextInput)
     // .then(res => res.json())
     // .then(function(res) {
     //     document.getElementById('results').innerHTML = res.message
     // })
 }
+
+
+
+
+
+
 
 export { handleSubmit }
