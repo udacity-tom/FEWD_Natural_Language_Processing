@@ -18,15 +18,36 @@ form {
     margin: 0 auto;
 }
 
+.input-card {
+    outline: auto;
+}
+
+.inputURL {
+    outline: auto;
+    display: none;
+}
+.inputText {
+    outline: auto;
+    display: block;
+}
+
 input {
-    // padding: 5px 20px;
-    width: 200%;
+    width: 100%;
     line-height: 16px;
-    // margin: 10px 0;
     text-align: center;
     &#url, &#text {
         margin-left: 50px;
+        height: 100px;
     }
+    &[type="textarea"] {
+        height: 200px;
+        margin-left: 50px;
+    }
+}
+
+
+textarea {
+    margin-left: 50px;
 }
 
 select {
@@ -37,25 +58,17 @@ select {
 }
 
 
-.switch-text {
-    font-size: 2em;
-    text-align: center;
-    // padding: 5px;
-    // margin: 50px;
-}
 
-.switch-table {
-    margin: 50px;
-}
-
-$buttonHeight: 34px;
-$buttonCenter: 26px;
 
 
 .button {
+    // flex: auto;
+    // grid-auto-rows: 1 1;
+    // grid-auto-columns: auto;
     width: 250px;
     height: 100px;
     border: none;
+    margin-left: 50px;
     border-radius: 25px;
     font-size: 2em;
     color: $button-text;
@@ -69,17 +82,23 @@ $buttonCenter: 26px;
     }
 }
 
-.inputURL {
-    display: none;
+.switch-text {
+    font-size: 2em;
+    text-align: center;
+    padding: 5px;
+    // margin: 50px;
 }
 
-
-.inputText {
-    display: block;
+.switch-table {
+    outline: auto;
+    margin: 50px;
 }
+$buttonHeight: 34px;
+$buttonCenter: 26px;
+
 
 // For switch definition 
-// Partly taken from 
+// Based on the following link
 //https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch
 .switch {
     position: relative;
