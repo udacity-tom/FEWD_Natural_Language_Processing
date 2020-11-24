@@ -11,6 +11,7 @@ module.exports = {
     devtool: 'source-map',
     stats: 'verbose',
     output: {
+        crossOriginLoading: 'anonymous',
         libraryTarget: 'var', 
         library: 'Client',
     },

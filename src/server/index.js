@@ -85,16 +85,18 @@ app.get('/test', function (req, res) {
         .then(function(data) {
             // processRequest(data)
             res.send(data)
-        })
-        
-    
+        })  
 })
 
-// app.post('/process', processRequest);
 
-// function processRequest(req, res){
-//     console.log("req.body", req.body)
-// }
+
+
+app.post('/process', processRequest)
+
+function processRequest(req, res){
+    const newRequest = {textToAnalyze} = req.body
+    console.log("req.body->Text to process via MC", newRequest)
+}
 
 
 // function processRequest(req, res){
