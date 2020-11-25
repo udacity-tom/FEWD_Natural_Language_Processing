@@ -18,4 +18,4 @@ function changeInputArea(){
     // let currentShow = document.getElementById("")
 }
 
-export { changeInputArea };
+export { changeInputArea }; 
