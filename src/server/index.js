@@ -14,14 +14,16 @@ const txtToTest = "People are planning to drive more in future than they did bef
 const txtToTest2 ="Sweaty Rudy Giuliani suffers hair malfunction in latest bizarre press conference On 7 November, the day the presidential election was called for Joe Biden, former New York mayor turned Trump attorney Rudy Giuliani addressed the media at a landscaping company between a sex shop and a crematorium on Philadelphia’s industrial fringe. For two weeks, as the Trump campaign continued to claim without evidence that the election had been stolen, America wondered if Giuliani could possibly ever top that."
 const urlToAnalyse="https://www.theguardian.com/us-news/2020/nov/19/rudy-giuliani-dye-my-cousin-vinny-press-conference"
 //setup basic URL for Meaning Cloud
-const prefixURL = "https://api.meaningcloud.com/sentiment-2.1?key"
+function getURL(){
+const prefixURL = "https://api.meaningcloud.com/sentiment-2.1?key="
 const meanCloud_API_KEY = process.env.API_KEY;
-
+// const suffix =
+}
 const app = express()
 app.use(express.static('dist'))
 app.use(cors())
-app.use(bodyParser.text())
-// app.use(bodyParser.json())
+// app.use(bodyParser.text())
+app.use(bodyParser.json())
 // app.use(bodyParser.urlencoded({
 //     extended: true
 // }))
@@ -93,8 +95,9 @@ app.post('/process', processRequest)
 
 function processRequest(req, res){
     console.log("req.body->Text to process via MC", req.body)
-    const newRequest = req.body
-    console.log("req.body->Text to process via MC", req.body)
+    const newRequest = {URL, currentTextInput} = req.body
+    console.log("newRequest", newRequest.URL, newRequest.currentTextInput)
+    console.log("req.body->Text to process via MC", req.body.URL, req.body.data)
 }
 
 

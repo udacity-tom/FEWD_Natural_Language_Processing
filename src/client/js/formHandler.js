@@ -12,29 +12,38 @@ function handleSubmit(event) {
     
 
 
-    
-function sendRequestToProcess() {
-    const currentTextInput = document.getElementById("text").value
-    postData('/process', currentTextInput)
-}
 
 
-const postData = async (url = '', data= {data}) => {
+const postData = async (url = '', data= {}) => {
     console.log("in postData", data, JSON.stringify(data))
     const response = await fetch('http://localhost:8081'+url,{
         method: 'POST',
         mode: 'cors',
         credentials: 'same-origin',
         headers: {
-            'Content-Type': 'text/plain',
+            // 'Content-Type': 'text/plain',
+            'Content-Type': 'application/json',
         },
-        body: (data),
+        body: JSON.stringify(data),
     });
 }
     // let formText = document.getElementById('name').value
     // checkForName(formText)
     console.log("::: Form Submitted :::")
-    sendRequestToProcess(currentTextInput.value);
+    
+function sendRequestToProcess(URL, currentTextInput) {
+        // const currentTextInput = document.getElementById("text").value
+        
+        postData('/process', {URL,currentTextInput})
+}
+if(currentInput.checked){
+    sendRequestToProcess(true,currentTextInput.value);
+} else {
+    sendRequestToProcess(false, currentTextInput.value);
+}
+    
+
+    // sendRequestToProcess(currentTextInput.value);
     //updateUI()
 
 
