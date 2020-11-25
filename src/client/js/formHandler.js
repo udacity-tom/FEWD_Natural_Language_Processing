@@ -26,10 +26,10 @@ const postData = async (url = '', data= {}) => {
     // checkForName(formText)
     console.log("::: Form Submitted :::")
     
-function sendRequestToProcess(URL, currentTextInput) {
+function sendRequestToProcess(URL, currentInput) {
         // const currentTextInput = document.getElementById("text").value
         
-        postData('/process', {URL,currentTextInput})
+        postData('/process', {URL,currentInput})
 }
 function checkInput(){
     const currentInput = document.getElementById("inputAreaType")
@@ -42,9 +42,22 @@ function checkInput(){
     }
 }
 
+function updateUI(){
+
+}
+
+
+const processClick = async () => {
+    const returnedData = await checkInput();
+    updateUI(returnedData);
+
+}
+
+// function async processClick(){
+    
+// }
 
 checkInput();
-
     
 
     // sendRequestToProcess(currentTextInput.value);
