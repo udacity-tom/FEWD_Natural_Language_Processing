@@ -3,17 +3,12 @@ function handleSubmit(event) {
 
     // check what text was put into the form field
     //check what data type was entered //true->URL false->Text
-    const currentInput = document.getElementById("inputAreaType")
-    const currentTextInput = document.getElementById("text")
-    console.log(currentInput.checked)
-    if(!currentInput.checked) {
-        console.log("currentTextInput.value: ->",currentTextInput.value)
-    }
     
-
-
-
-
+    
+    // console.log(currentInput.checked)
+    // if(!currentInput.checked) {
+    //     console.log("currentTextInput.value: ->",currentTextInput.value)
+    // }
 const postData = async (url = '', data= {}) => {
     console.log("in postData", data, JSON.stringify(data))
     const response = await fetch('http://localhost:8081'+url,{
@@ -36,11 +31,20 @@ function sendRequestToProcess(URL, currentTextInput) {
         
         postData('/process', {URL,currentTextInput})
 }
-if(currentInput.checked){
-    sendRequestToProcess(true,currentTextInput.value);
-} else {
-    sendRequestToProcess(false, currentTextInput.value);
+function checkInput(){
+    const currentInput = document.getElementById("inputAreaType")
+    const currentTextInput = document.getElementById("text")
+    const currentURLInput = document.getElementById("url");
+    if(currentInput.checked){
+        sendRequestToProcess(true,currentURLInput.value);
+    } else {
+        sendRequestToProcess(false, currentTextInput.value);
+    }
 }
+
+
+checkInput();
+
     
 
     // sendRequestToProcess(currentTextInput.value);

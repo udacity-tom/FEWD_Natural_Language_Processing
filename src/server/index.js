@@ -94,10 +94,12 @@ app.get('/test', function (req, res) {
 app.post('/process', processRequest)
 
 function processRequest(req, res){
-    console.log("req.body->Text to process via MC", req.body)
+    // console.log("req.body->Text to process via MC", req.body)
     const newRequest = {URL, currentTextInput} = req.body
-    console.log("newRequest", newRequest.URL, newRequest.currentTextInput)
-    console.log("req.body->Text to process via MC", req.body.URL, req.body.data)
+    console.log("Input is ", newRequest.URL === false ? "text" : "URL")
+    console.log("Text given is ", newRequest.currentTextInput)
+    // console.log("newRequest", newRequest.URL, newRequest.currentTextInput)
+    // console.log("req.body->Text to process via MC", req.body.URL, req.body.data)
 }
 
 
