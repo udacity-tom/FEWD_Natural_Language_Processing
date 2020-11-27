@@ -15,9 +15,9 @@ app.use(express.static('dist'))
 app.use(cors())
 // app.use(bodyParser.text())
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({
-    extended: true
-}))
+// app.use(bodyParser.urlencoded({
+//     extended: true
+// }))
 
 
 
@@ -43,15 +43,13 @@ const getMCData = async (URL) => {
     const res = await fetch(URL)
     // console.log("res is ",res)
     try {
-        // const data = await res.json();
-        const data = await res;
+        const data = await res.json();
         // await console.log("Data returned in fetch; ",data);
         return data;
     } catch(error) {
         console.log('Data error on Meaning Cloud :', error);
     }
-    // return res.json();
-    return res;
+    return res.json();
     }
 // function getURL() {
 //     return `https://api.meaningcloud.com/sentiment-2.1?key=${meanCloud_API_KEY}&txt=${txtToTest}&lang=en`
@@ -102,22 +100,21 @@ function processRequest(req, res){
     // console.log("req.body->Text to process via MC", req.body)
     const newRequest = {URL, currentInput} = req.body
     console.log("Input is ", newRequest.URL == false ? "text" : "URL")
-    let returnedData = Array
+    // let returnedData = Array
     // console.log("Request given is ", newRequest.currentInput)
     // console.log("The meaningcloud URL is ",getURL(newRequest.URL, newRequest.currentInput))
     // console.log(getMCData(getURL()));
     getURL(newRequest.URL, newRequest.currentInput)
     .then(function(URL) {
-        res.send(getMCData())
-        // returnedData = getMCData(URL)
-        // res.send(returnedData)
-        // return returnedData
+        const returnedData =  getMCData(URL)
+        console.log("Data returned from getMCData",returnedData)
+        res.send(returnedData)
     })
-    // .then(function(returnedData){
-    //     console.log("Server returned data->received",returnedData)
-    //     res.send(returnedData)
-    //     // res.send( returnedData)
-    // })
+    .then(function(returnedData){
+        console.log("Server returned data->received",returnedData)
+        res.send(returnedData)
+        // res.send( returnedData)
+    })
     // .then(function (returnedData) {
     //     return returnedData
     // });

@@ -27,14 +27,15 @@ function sendRequestToProcess(URL, currentInput) {
 // check what text was put into the form field
 //check what data type was entered //true->URL false->Text
 const checkInput = async () => {
+    let returnedData = {}
     const currentInput = document.getElementById("inputAreaType")
     const currentTextInput = document.getElementById("text")
     const currentURLInput = document.getElementById("url");
     if(currentInput.checked){
-        const returnedData = await postData('/process',{URL:true,currentInput:currentURLInput.value});
+        returnedData = await postData('/process',{URL:true,currentInput:currentURLInput.value});
         console.log("returned data in formhandler",returnedData)
     } else {
-        const returnedData  = await postData('/process',{URL:false,currentInput:currentTextInput.value});
+        returnedData  = await postData('/process',{URL:false,currentInput:currentTextInput.value});
         console.log("returned data in formhandler",returnedData)
     }
     // console.log
