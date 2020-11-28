@@ -64,9 +64,10 @@ const checkInput = async () => {
 
 
 function updateUI(data){
-    document.getElementById("results").innerHTML = data.agreement
-
-
+    document.getElementById("agreement").innerHTML = data.agreement
+    document.getElementById("confidence").innerHTML = data.confidence
+    document.getElementById("irony").innerHTML = data.irony
+    document.getElementById("subjectivity").innerHTML = data.subjectivity
 }
 
 
