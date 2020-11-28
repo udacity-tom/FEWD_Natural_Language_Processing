@@ -15,17 +15,12 @@ const postData = async (url = '', data= {}) => {
     });
     try {
         const newData = await response.json();
-        console.log("formhandler response async function ",response)
-        console.log("formhandler postData async function ",newData)
         return newData;
     } catch(error) {
         console.log("error",error);
     }
-    
-    // return response
 }
-    // let formText = document.getElementById('name').value
-    // checkForName(formText)
+
     console.log("::: Form Submitted :::")
     
 function sendRequestToProcess(URL, currentInput) {
@@ -36,28 +31,11 @@ function sendRequestToProcess(URL, currentInput) {
 // check what text was put into the form field
 //check what data type was entered //true->URL false->Text
 const checkInput = async () => {
-    let returnedData = {}
     const currentInput = document.getElementById("inputAreaType")
-    const currentTextInput = document.getElementById("text")
-    const currentURLInput = document.getElementById("url");
-    
-    
-    returnedData = await postData('/process',{URL:currentInput.checked,currentInput:currentURLInput.value});
+    const inputToAnalyse = document.getElementById( (currentInput.checked ? "url" : "text") )
+    const returnedData = await postData('/process',{URL:currentInput.checked,currentInput:inputToAnalyse.value});
     console.log("returned data in checkInput",returnedData)
     return returnedData    
-    
-    
-    
-    // if(currentInput.checked){
-    //     // returnedData = await postRequest(URL: true, currentInput: currentInput.value)
-    //     returnedData = await postData('/process',{URL:true,currentInput:currentURLInput.value});
-    //     console.log("returned data in checkInput",returnedData)
-    // } else {
-    //     returnedData  = await postData('/process',{URL:false,currentInput:currentTextInput.value});
-    //     console.log("returned data in checkInput",returnedData)
-    // }
-    // // console.log
-    // return returnedData
 }
 
 
@@ -75,14 +53,11 @@ function processClick() {
     const getResults = async () => {
         const returnedData = await checkInput()
         return returnedData
-        // .then(function () {
-        //     console.log("processClick results", returnedData)
-        // })
     }
     getResults()
-    .then(function(mydata) {
-    console.log("processClick results", mydata)
-    updateUI(mydata)
+    .then(function(data) {
+    console.log("processClick results", data)
+    updateUI(data)
     })
 }
 
