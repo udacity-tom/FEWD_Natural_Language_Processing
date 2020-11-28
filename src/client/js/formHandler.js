@@ -63,16 +63,37 @@ const checkInput = async () => {
 
 
 
-function updateUI(){
+function updateUI(data){
+    document.getElementById("results").innerHTML = data.agreement
+
 
 }
 
-const processClick = async () => {
-    const returnedData = await checkInput()
-    .then(function () {
-        console.log("Returned data in processClick",returnedData)
+
+function processClick() {
+    const getResults = async () => {
+        const returnedData = await checkInput()
+        return returnedData
+        // .then(function () {
+        //     console.log("processClick results", returnedData)
+        // })
     }
-    )}
+    getResults()
+    .then(function(mydata) {
+    console.log("processClick results", mydata)
+    updateUI(mydata)
+    })
+}
+
+
+// const processClick = async () => {
+//     let returnedData = {}
+//     const returnedData 
+//     returnedData = await checkInput() 
+//     .then(function () {
+        
+//     }
+//     )}
     // updateUI(returnedData);
     // const processClick = async () => {
     //     const res = await
