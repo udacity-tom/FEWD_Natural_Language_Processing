@@ -9,7 +9,6 @@ $button-backg: #4caf50;
     box-shadow: 0 5px $dispersion black;
 }
 
-
 form {
     // border: 1px solid #545454;
     border-radius: 3px;
@@ -29,6 +28,10 @@ form {
 .inputText {
     outline: auto;
     display: block;
+}
+
+.error {
+    display: none;
 }
 
 input {

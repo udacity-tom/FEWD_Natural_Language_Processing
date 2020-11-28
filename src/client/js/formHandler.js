@@ -1,8 +1,9 @@
 function handleSubmit(event) {
     event.preventDefault()
 
-//postdata submission using json encoding!!
+    //postdata submission using json encoding!!
 const postData = async (url = '', data= {}) => {
+    clearUI()
     // console.log("in postData", data, JSON.stringify(data))
     const response = await fetch('http://localhost:8081'+url,{
         method: 'POST',
@@ -16,7 +17,6 @@ const postData = async (url = '', data= {}) => {
     });
     try {
         const newData = await response.json();//NOTE: v. important! wrt server config
-        console.log(newData)
         return newData;
     } catch(error) {
         console.log("error",error);
@@ -32,21 +32,33 @@ const processInput = async () => {
     const returnedData = await postData('/process',{URL:currentInput.checked,currentInput:inputToAnalyse.value});
     return returnedData    
 }
-
+const ui = {agreement:"agreement", confidence:"confidence", irony:"irony", subjectivity:"subjectivity" }
 //updates the Ui with the server response of Meaning Cloud analysis on user input
 function updateUI(data){
-    document.getElementById("agreement").innerHTML = data.agreement
-    document.getElementById("confidence").innerHTML = data.confidence
-    document.getElementById("irony").innerHTML = data.irony
-    document.getElementById("subjectivity").innerHTML = data.subjectivity
+    
+    // const ui = {agreement: {0: "agreement",1: ""}, confidence: {0: "confidence",1:""}, irony: {0: "irony", 1:""}, subjectivity: {0: "subjectivity",1: ""} }
+    for(let element in ui){
+        console.log("element ui[element]",element, ui[element])
+        document.getElementById(ui[element]).innerHTML = data[ui[element]]
+    }
 }
 
 function notifyError(data){
-    document.getElementById("error").innerHTML = "There was an error. Error Code "+data.status.code
+    const error = document.getElementById("error")
+    error.innerHTML = "There was an error. Error Code "+data.status.code+". Please try again"
+    error.style.cssText = "display:block; font-size:2em;"
+    // setTimeout(error.style.display="none",3000)
+}
+
+function clearUI(index){
+    for(let element in ui)
+    document.getElementById(ui[element]).innerHTML = ""
+    document.getElementById("error").style.display = "none"
 }
 
 //function to steer js actions on submission
 function processClick() {
+    // updateUI(data,1)
     const getResults = async () => {
         const returnedData = await processInput()
         return returnedData
@@ -56,7 +68,8 @@ function processClick() {
         if(data.status.code !="0"){
             notifyError(data)
         }
-    updateUI(data)
+    // clearUI()
+    updateUI(data,0)
     })
 }
 
