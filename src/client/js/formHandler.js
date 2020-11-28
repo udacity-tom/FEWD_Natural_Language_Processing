@@ -13,7 +13,16 @@ const postData = async (url = '', data= {}) => {
         },
         body: JSON.stringify(data),
     });
-    return response
+    try {
+        const newData = await response.json();
+        console.log("formhandler response async function ",response)
+        console.log("formhandler postData async function ",newData)
+        return newData;
+    } catch(error) {
+        console.log("error",error);
+    }
+    
+    // return response
 }
     // let formText = document.getElementById('name').value
     // checkForName(formText)
@@ -31,25 +40,37 @@ const checkInput = async () => {
     const currentInput = document.getElementById("inputAreaType")
     const currentTextInput = document.getElementById("text")
     const currentURLInput = document.getElementById("url");
-    if(currentInput.checked){
-        returnedData = await postData('/process',{URL:true,currentInput:currentURLInput.value});
-        console.log("returned data in formhandler",returnedData)
-    } else {
-        returnedData  = await postData('/process',{URL:false,currentInput:currentTextInput.value});
-        console.log("returned data in formhandler",returnedData)
-    }
-    // console.log
-    return returnedData
+    
+    
+    returnedData = await postData('/process',{URL:currentInput.checked,currentInput:currentURLInput.value});
+    console.log("returned data in checkInput",returnedData)
+    return returnedData    
+    
+    
+    
+    // if(currentInput.checked){
+    //     // returnedData = await postRequest(URL: true, currentInput: currentInput.value)
+    //     returnedData = await postData('/process',{URL:true,currentInput:currentURLInput.value});
+    //     console.log("returned data in checkInput",returnedData)
+    // } else {
+    //     returnedData  = await postData('/process',{URL:false,currentInput:currentTextInput.value});
+    //     console.log("returned data in checkInput",returnedData)
+    // }
+    // // console.log
+    // return returnedData
 }
 
-// function updateUI(){
 
-// }
+
+
+function updateUI(){
+
+}
 
 const processClick = async () => {
     const returnedData = await checkInput()
     .then(function () {
-        console.log("Returned data",returnedData)
+        console.log("Returned data in processClick",returnedData)
     }
     )}
     // updateUI(returnedData);
