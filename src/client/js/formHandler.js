@@ -16,6 +16,7 @@ const postData = async (url = '', data= {}) => {
     });
     try {
         const newData = await response.json();//NOTE: v. important! wrt server config
+        console.log(newData)
         return newData;
     } catch(error) {
         console.log("error",error);
@@ -40,6 +41,10 @@ function updateUI(data){
     document.getElementById("subjectivity").innerHTML = data.subjectivity
 }
 
+function notifyError(data){
+    document.getElementById("error").innerHTML = "There was an error. Error Code "+data.status.code
+}
+
 //function to steer js actions on submission
 function processClick() {
     const getResults = async () => {
@@ -48,6 +53,9 @@ function processClick() {
     }
     getResults()
     .then(function(data) {
+        if(data.status.code !="0"){
+            notifyError(data)
+        }
     updateUI(data)
     })
 }
