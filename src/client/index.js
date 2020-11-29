@@ -1,5 +1,4 @@
 
-import { checkForName } from './js/nameChecker'
 import { handleSubmit } from './js/formHandler'
 import { changeInputArea } from './js/changeInputType'
 
@@ -14,16 +13,11 @@ import './styles/footer.scss'
 import meaningCloudLogo from './views/img/meaning-cloud-logo.png'
 
 
-
-
-console.log(checkForName);
-
 // alert("I EXIST")
 console.log("CHANGE in SOURCE!!");
 
 
 export {
-    checkForName,
     handleSubmit,
     changeInputArea,
     meaningCloudLogo,

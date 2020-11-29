@@ -22,14 +22,14 @@ const getMCData = async (req,res) => {
     const suffixURL = req.body.URL ? "&url=" : "&txt=";
     const endURL = "&lang=en";
     const finalURL = `${prefixURL}${meanCloud_API_KEY}${suffixURL}${currentInput}${endURL}`
-    console.log(finalURL)
+    console.log("Requesting Data from Meaning Cloud")
     res = await fetch(finalURL)
     try {
         const data = await res.json();
-             console.log("Data returned in getMCData; ",data);
+             console.log("Data has been returned from Meaning Cloud.");
         return data;
     } catch(error) {
-        console.log('Data error on Meaning Cloud :', error);
+        console.log('Data error from Meaning Cloud :', error);
         return error
     }
 }
@@ -54,10 +54,11 @@ app.get('/test', function (req, res) {
 app.post('/process', processRequest)
 
 function processRequest(req, res) {
+    console.log("Data request received from client.")
     getMCData(req,res)
     .then(function(data) {
         res.send(data)
-        console.log("data in processRequest",data)
+        console.log("Data has been sent to client.")
     });
 }
 
