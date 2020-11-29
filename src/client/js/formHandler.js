@@ -1,8 +1,10 @@
 function handleSubmit(event) {
     event.preventDefault()
+    const ui = {agreement:"agreement", confidence:"confidence", irony:"irony", subjectivity:"subjectivity" }
 
     //postdata submission using json encoding!!
 const postData = async (url = '', data= {}) => {
+    //Clears errror and results
     clearUI()
     // console.log("in postData", data, JSON.stringify(data))
     const response = await fetch('http://localhost:8081'+url,{
@@ -32,13 +34,10 @@ const processInput = async () => {
     const returnedData = await postData('/process',{URL:currentInput.checked,currentInput:inputToAnalyse.value});
     return returnedData    
 }
-const ui = {agreement:"agreement", confidence:"confidence", irony:"irony", subjectivity:"subjectivity" }
+
 //updates the Ui with the server response of Meaning Cloud analysis on user input
 function updateUI(data){
-    
-    // const ui = {agreement: {0: "agreement",1: ""}, confidence: {0: "confidence",1:""}, irony: {0: "irony", 1:""}, subjectivity: {0: "subjectivity",1: ""} }
     for(let element in ui){
-        console.log("element ui[element]",element, ui[element])
         document.getElementById(ui[element]).innerHTML = data[ui[element]]
     }
 }

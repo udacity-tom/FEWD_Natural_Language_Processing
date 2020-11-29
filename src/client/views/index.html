@@ -66,7 +66,7 @@
             <!-- <section> --> 
             <section class="results">
                 <strong>Form Results:</strong>
-                <p>The following summary results were obtained for the submitted text/URL</p>
+                <p>The Meaning Cloud API returned following summary results for the submitted text/URL</p>
                 <table>
                     <tbody>
                         <br>
@@ -102,6 +102,15 @@
 
 
     </body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById("inputAreaType").checked = false
+            const urlInput = document.getElementById("url").value = ""
+            console.log(urlInput)
+            const textInput = document.getElementById("text").value = ""
+            console.log(textInput)
+        })
+    </script>
     <!-- <script>
         function changeInputArea(){
             let currentInput = document.getElementById("switch-text");
