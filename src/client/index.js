@@ -1,6 +1,10 @@
 
 import { handleSubmit } from './js/formHandler'
 import { changeInputArea } from './js/changeInputType'
+import { updateUI } from './js/updateUI'
+import { checkURLInput } from './js/checkURLInput'
+import { notifyError } from './js/notifyError'
+import { clearUI } from './js/clearUI.js'
 
 import './styles/resets.scss'
 import './styles/base.scss'
@@ -21,4 +25,8 @@ export {
     handleSubmit,
     changeInputArea,
     meaningCloudLogo,
+    updateUI,
+    checkURLInput,
+    notifyError,
+    clearUI,
 }

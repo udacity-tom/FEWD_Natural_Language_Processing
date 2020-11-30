@@ -10,9 +10,8 @@ function handleSubmit(event) {
 
     //postdata submission using json encoding!!
 const postData = async (url = '', data= {}) => {
-    //Clears errror and results
-    clearUI()
-    // console.log("in postData", data, JSON.stringify(data))
+    //Clears error and results
+    Client.clearUI()
     const response = await fetch('http://localhost:8081'+url,{
         method: 'POST',
         mode: 'cors',
@@ -38,8 +37,8 @@ const processInput = async () => {
     const currentInput = document.getElementById("inputAreaType")
     const inputToAnalyse = document.getElementById( (currentInput.checked ? "url" : "text"))
     if(currentInput.checked){
-        if(!checkURLInput(inputToAnalyse.value)){
-            notifyError(errURL)
+        if(!Client.checkURLInput(inputToAnalyse.value)){
+            Client.notifyError(errURL)
             return
         }
         console.log("URL valid!")
@@ -48,35 +47,17 @@ const processInput = async () => {
     return returnedData    
 }
 
-//updates the Ui with the server response of Meaning Cloud analysis on user input
-function updateUI(data){
-    for(let element in ui){
-        document.getElementById(ui[element]).innerHTML = data[ui[element]]
-    }
-}
+// function notifyError(data){
+//     const error = document.getElementById("error")
+//     error.innerHTML = "There was an error. Error Code "+data.status.code+" : "+data.status.msg+". Please try again.."
+//     error.style.cssText = "display:block; font-size:2em;"
+// }
 
-function checkURLInput(inputToCheck) {
-    const regExp = /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/
-    if(regExp.test(inputToCheck)){
-        console.log("Domain is valid!")
-        return true
-    }
-    console.log("Domain is INVALID!")
-    return false 
-}
-
-
-function notifyError(data){
-    const error = document.getElementById("error")
-    error.innerHTML = "There was an error. Error Code "+data.status.code+" : "+data.status.msg+". Please try again.."
-    error.style.cssText = "display:block; font-size:2em;"
-}
-
-function clearUI(index){
-    for(let element in ui)
-    document.getElementById(ui[element]).innerHTML = ""
-    document.getElementById("error").style.display = "none"
-}
+// function clearUI(index){
+//     for(let element in ui)
+//     document.getElementById(ui[element]).innerHTML = ""
+//     document.getElementById("error").style.display = "none"
+// }
 
 //function to steer js actions on submission
 function processClick() {
@@ -87,12 +68,14 @@ function processClick() {
     getResults()
     .then(function(data) {
         // if(!data)return
+        if(data != undefined){
         if(data.status.code !="0"){
-            notifyError(data)
-        } else {
-            notifyError(errURL)
+            Client.notifyError(data)
         }
-    updateUI(data,0)
+        } else {
+            return
+        }
+        Client.updateUI(data)
     })
 }
 
