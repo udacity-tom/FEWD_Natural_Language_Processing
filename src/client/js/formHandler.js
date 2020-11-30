@@ -1,5 +1,8 @@
 function handleSubmit(event) {
     event.preventDefault()
+    console.log("event",event)
+    // const arrOfElements = Array.from(event.target.elements)
+    // console.log("arrOfElements", arrOfElements)
     const ui = {agreement:"agreement", confidence:"confidence", irony:"irony", subjectivity:"subjectivity" }
     const errURL = {
         status: {
@@ -8,7 +11,7 @@ function handleSubmit(event) {
         }
     }
 
-    //postdata submission using json encoding!!
+//postdata submission using json encoding!!
 const postData = async (url = '', data= {}) => {
     //Clears error and results
     Client.clearUI()
@@ -47,19 +50,7 @@ const processInput = async () => {
     return returnedData    
 }
 
-// function notifyError(data){
-//     const error = document.getElementById("error")
-//     error.innerHTML = "There was an error. Error Code "+data.status.code+" : "+data.status.msg+". Please try again.."
-//     error.style.cssText = "display:block; font-size:2em;"
-// }
-
-// function clearUI(index){
-//     for(let element in ui)
-//     document.getElementById(ui[element]).innerHTML = ""
-//     document.getElementById("error").style.display = "none"
-// }
-
-//function to steer js actions on submission
+//function to steer js actions on submission, check for errors at input and on submission
 function processClick() {
     const getResults = async () => {
         const returnedData = await processInput()
@@ -69,9 +60,9 @@ function processClick() {
     .then(function(data) {
         // if(!data)return
         if(data != undefined){
-        if(data.status.code !="0"){
-            Client.notifyError(data)
-        }
+            if(data.status.code !="0"){
+                Client.notifyError(data)
+            }
         } else {
             return
         }
