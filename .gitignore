@@ -10,3 +10,4 @@ __test__/clearUI.test.js
 __test__/formHandler.test.js
 __test__/notifyError.test.js
 __test__/updateUI.test.js
+misc
