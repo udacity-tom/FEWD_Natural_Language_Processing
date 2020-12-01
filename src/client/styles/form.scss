@@ -3,70 +3,67 @@ $Intro-color: #ffb703;
 $text-color: #219ebc;
 $button-text: #ffffff;
 $button-backg: #4caf50;
-// @mixin makeButton($button-text, $button-bckg) {
-// }
+
 @mixin displayShadow($dispersion) {
     box-shadow: 0 5px $dispersion black;
 }
 
+.headerTitle {
+    margin-top: 40px;
+}
+
 form {
-    // border: 1px solid #545454;
     border-radius: 3px;
     padding: 40px;
     margin-top: 6em;
     margin: 0 auto;
 }
 
-.input-card {
-    outline: auto;
-}
-
 .inputURL {
-    outline: auto;
     display: none;
 }
 .inputText {
-    outline: auto;
     display: block;
+}
+
+.introText {
+    font-size: 1.5em;
 }
 
 .error {
     display: none;
 }
 
-input {
-    width: 100%;
-    line-height: 16px;
-    text-align: center;
-    &#url, &#text {
-        margin-left: 50px;
-        height: 100px;
-    }
-    &[type="textarea"] {
-        height: 200px;
-        margin-left: 50px;
-    }
+#text, #url {
+    padding-top: 50px;
+}
+
+#inputArea {
+    display: flex;
 }
 
 textarea {
     margin-left: 50px;
 }
 
-select {
-    width: 15em;
-    height: 4em;
-    // font-size: 1em;
-    // margin-left: 20px;
+#theSwitch {
+    display: flex;
+    label {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .switch-text {
+    font-size: 2em;
+    text-align: center;
+    padding: 5px;
+    }
 }
 
 .button {
-    // flex: auto;
-    // grid-auto-rows: 1 1;
-    // grid-auto-columns: auto;
+    margin-top: 20px;
     width: 250px;
     height: 100px;
     border: none;
-    margin-left: 50px;
     border-radius: 25px;
     font-size: 2em;
     color: $button-text;
@@ -80,20 +77,12 @@ select {
     }
 }
 
-.switch-text {
-    font-size: 2em;
-    text-align: center;
-    padding: 5px;
-    // margin: 50px;
+.results {
+    font-size: 1.5em;
 }
 
-.switch-table {
-    outline: auto;
-    margin: 50px;
-}
 $buttonHeight: 34px;
 $buttonCenter: 26px;
-
 
 // For switch definition 
 // Based on the following link

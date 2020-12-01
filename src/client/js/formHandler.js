@@ -1,9 +1,5 @@
 function handleSubmit(event) {
     event.preventDefault()
-    console.log("event",event)
-    // const arrOfElements = Array.from(event.target.elements)
-    // console.log("arrOfElements", arrOfElements)
-    const ui = {agreement:"agreement", confidence:"confidence", irony:"irony", subjectivity:"subjectivity" }
     const errURL = {
         status: {
             code: "998",
@@ -20,7 +16,6 @@ const postData = async (url = '', data= {}) => {
         mode: 'cors',
         credentials: 'same-origin',
         headers: {
-            // 'Content-Type': 'text/plain',
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
@@ -32,8 +27,7 @@ const postData = async (url = '', data= {}) => {
         console.log("error",error);
     }
 }
-    console.log("::: Form Submitted :::")
-    
+
 // check what text was put into the form field
 //check what data type was entered //true->URL false->Text
 const processInput = async () => {
@@ -46,11 +40,11 @@ const processInput = async () => {
         }
         console.log("URL valid!")
     }
-    const returnedData = await postData('/process',{URL:currentInput.checked,currentInput:inputToAnalyse.value});
+    const returnedData = await postData('/process',{URL:currentInput.checked, currentInput:inputToAnalyse.value});
     return returnedData    
 }
 
-//function to steer js actions on submission, check for errors at input and on submission
+//function to steer javascriptt actions on submission, check for errors at input and on submission
 function processClick() {
     const getResults = async () => {
         const returnedData = await processInput()
@@ -58,7 +52,6 @@ function processClick() {
     }
     getResults()
     .then(function(data) {
-        // if(!data)return
         if(data != undefined){
             if(data.status.code !="0"){
                 Client.notifyError(data)
@@ -70,7 +63,7 @@ function processClick() {
     })
 }
 
-//starts the handling process
+//starts the handling process and submits the server request
 processClick();   
 }
 

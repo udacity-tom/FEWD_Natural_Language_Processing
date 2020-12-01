@@ -3,11 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content= "width-device-width, initial-scale=1.0">
-        <title>NLP Today!</title>
+        <title>NLP Text Analysis</title>
     </head>
-
     <body>
-
         <header>
             <div class="headerTitle">
                 <h1 class="page_title">Natural Language Processing</h1>    
@@ -25,43 +23,31 @@
             <section class="input-card">
                 <h1>Intro Text </h1>
                 <section class="introText">
-                    <p>This website processes either <code>text input</code> or a URL (Universal Resource Locator) pointing to a text article.</p>
-                    <p>The text will then be analysed by the Meaning Cloud online APIs to determine various factors about it's content.</p>
+                    <p>This website processes either <code>text input</code> or a URL (Uniform Resource Locator) pointing to a text article.</p>
+                    <br>
+                    <p>The text will be analysed by the Meaning Cloud online APIs to determine various factors about it's content and a Sentiment Analysis will be presented on the page below.</p>
                 </section>
                     <section class="inputform">
-                        <form class="form" >
-                            <form class="form" onsubmit="return handleSubmit(event)">
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td class="switch-text"><label>Text</label></td>
-                                                <td class="switch-text">
-                                                    <label class="switch" >
-                                                        <input type ="checkbox" id="inputAreaType" onClick="Client.changeInputArea()" value=false>
-                                                        <span class="slider round"></span>
-                                                    </label>
-                                                </td>  
-                                            <td class="switch-text">URL</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <table>
-                                    <tbody>
-                                        <tr class="inputURL" id="inputURL">
-                                            <td><button class="button" type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">Analyze URL</button></td>
-                                            <td><input id="url" type="URL" required name="input"  placeholder="http://URL-Universal Resource Locator"></td>
-                                        </tr>
-                                        <tr class="inputText" id="inputText">
-                                            <td><button class="button" type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">Analyze Text</button></td>
-                                            <td><textarea id="text" type="textarea" rows="4" cols="60" placeholder="Input text"></textarea></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                    </form>
-                </section> <!--close input form-->
+                        <form class="form" onsubmit="return handleSubmit(event)">
+                            <section id="theSwitch">
+                                <label class="switch-text">Text</label>
+                                <label class="switch" >
+                                    <input type ="checkbox" id="inputAreaType" onClick="Client.changeInputArea()" value=false>
+                                    <span class="slider round"></span>
+                                </label>
+                                <label class="switch-text">URL</label>
+                            </section>
+                            <section id="inputArea">
+                                <button class="button inputURL" type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" >Analyze URL</button>
+                                <textarea id="url"  class="inputURL" name="input" rows="5" cols="60" placeholder="http://URL-Uniform-Resource-Locator"></textarea>
+                                <button class="button inputText" type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" >Analyse Text</button>
+                                <textarea id="text" class="inputText" name=input rows="5" cols="60" placeholder="Input text to analyse"></textarea>
+                            </section>
+                        </form>
+                    </section> <!--close input form-->
             </section>
             <section class="results">
-                <strong>Form Results:</strong>
+                <strong>Sentiment Analysis:</strong>
                 <p>The Meaning Cloud API returned the following summary results for the submitted text/URL</p>
                 <table>
                     <tbody>
@@ -100,9 +86,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             document.getElementById("inputAreaType").checked = false
             const urlInput = document.getElementById("url").value = ""
-            console.log(urlInput)
             const textInput = document.getElementById("text").value = ""
-            console.log(textInput)
         })
     </script>
     <script>
