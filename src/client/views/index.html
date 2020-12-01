@@ -11,8 +11,7 @@
         <header>
             <div class="headerTitle">
                 <h1 class="page_title">Natural Language Processing</h1>    
-            </div>
-            
+            </div> 
             <nav id="nav">
                 <div class="nav-link">
                     Home
@@ -32,7 +31,6 @@
                     <section class="inputform">
                         <form class="form" >
                             <form class="form" onsubmit="return handleSubmit(event)">
-                            <!-- <div class="switch-table"> -->
                                 <table>
                                     <tbody>
                                         <tr>
@@ -47,7 +45,6 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            <!-- </div> -->
                                 <table>
                                     <tbody>
                                         <tr class="inputURL" id="inputURL">
@@ -60,11 +57,9 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            <!-- </div> -->
                     </form>
                 </section> <!--close input form-->
             </section>
-            <!-- <section> --> 
             <section class="results">
                 <strong>Form Results:</strong>
                 <p>The Meaning Cloud API returned the following summary results for the submitted text/URL</p>
@@ -100,8 +95,6 @@
                 <img class="logo" src='./img/meaning-cloud-logo.png' alt="meaning cloud logo">
             </a>
         </footer>
-
-
     </body>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -112,11 +105,12 @@
             console.log(textInput)
         })
     </script>
-    <!-- <script>
-        function changeInputArea(){
-            let currentInput = document.getElementById("switch-text");
-            console.log("currentInput" currentInput);
-            // let currentShow = document.getElementById("")
+    <script>
+        if('serviceWorker' in navigator){
+            //Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
         }
-    </script> -->
+    </script>
 </html>

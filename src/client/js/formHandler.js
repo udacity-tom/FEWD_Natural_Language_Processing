@@ -7,7 +7,7 @@ function handleSubmit(event) {
     const errURL = {
         status: {
             code: "998",
-            msg: "URL Problem, please check your input."
+            msg: "URL Problem, please check your input and add either http:// or https://"
         }
     }
 
