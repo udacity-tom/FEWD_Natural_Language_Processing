@@ -20,11 +20,11 @@ After a few moments the [Meaning Cloud](https://www.meaningcloud.com/) API will 
 
 After installing node and build packages, run the following scripts: 
 
-* `npm run start``
+* `npm run start`
 This will initiate the node server 
-* `npm build-dev``
+* `npm build-dev`
 A working copy of the development build will be run on the webpack dev server and opened in the default browser
-* `npm build-prod``
+* `npm build-prod`
 Will build the distribution folders according to the webpack production configuration
 
 
@@ -32,7 +32,7 @@ Will build the distribution folders according to the webpack production configur
 
 - Javascript (async, fetch, wait, etc in a modular design)
 - Node (For server and client)
-- Webpack (for development & production purposes/configuration/optimisation)
+- Webpack (for development & production purposes for configuration/optimisation)
 - Jest (for JS testing)
 - Service Workers (for offline viewing of the webpage)
 - Basic Error handling (pass-through of API errors/protocol checks on URLs)
