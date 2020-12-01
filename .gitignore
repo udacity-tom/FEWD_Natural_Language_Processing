@@ -5,3 +5,8 @@ natural language processing.code-workspace
 typical_response.js
 REQUIREMENTS.md
 coverage
+__test__/changeInputType.test.js
+__test__/clearUI.test.js
+__test__/formHandler.test.js
+__test__/notifyError.test.js
+__test__/updateUI.test.js
