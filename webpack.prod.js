@@ -34,10 +34,7 @@ module.exports = {
                     name: '[name].[ext]',
                     outputPath: 'img/',
                 }
-    
             },
-
-            
         ]
     },
     plugins: [
@@ -48,5 +45,4 @@ module.exports = {
         new WorkboxPlugin.GenerateSW(),
         new MiniCssExtractPlugin({filename: '[name].css'})
     ],
-
 }
