@@ -1,9 +1,11 @@
-import { handleSubmit } from "../src/client/js/formHandler"
+import { getResults } from "../src/client/js/formHandler"
 import 'regenerator-runtime/runtime';
 const fetch = require('node-fetch') 
 // { node-fetch } from "../node_modules/node-fetch"
 
-jest.mock('node-fetch')
+jest.mock('node-fetch', () => ({
+    get: jest.fn()
+}))
 
 describe("Takes click event, Processes input (checks validity-http,etc), Posts to server, Gets data from Server, Checks data validity, passes to updateUI, finish", () => {
     test("Runs, fetch request, fetch response-this is what needs to be tested", async () =>{
@@ -27,13 +29,13 @@ describe("Takes click event, Processes input (checks validity-http,etc), Posts t
         // const returnedData = await postData('/process', {URL:currentInput.checked, currentInput: inputToAnalyse.value});
 
 
-        const output = undefined;
+        // const output = undefined;
         // const output = `<button id="error" class="error" style="display: block; font-size: 2em;">There was an error. Error Code 4X3 : Some Random error, please check your input. Please try again..</button>`;
 
 
-        const testHandleSubmit = handleSubmit();
+        const testHandleSubmit = getResults();
         
-        expect(testHandleSubmit).toEqual(output)
+        expect(testHandleSubmit).toEqual(fetch.get())
     })
 })
 
