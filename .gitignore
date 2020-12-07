@@ -1,11 +1,11 @@
 #dependencies
-/node_modules
+node_modules
 
 #Testing
-/coverage
+coverage
 
 #Production build
-/dist
+dist
 
 #API keys
 .env

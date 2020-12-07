@@ -1,10 +1,18 @@
 import { TestScheduler } from 'jest';
+import 'regenerator-runtime/runtime';
+import 'babel-polyfill';
 import { postData } from '../src/client/js/postData';
-// import { babel-polyfill };
+const fetch = require('node-fetch');
 
-const postDataURL = 'http://localhost:8081'
+jest.mock('node-fetch');
 
-test('The postData function test', async () => {
-    const response = await postData("/process",{URL:'false', currentInput:"The quick brown fox jumped over the lazy dog"});
-    expect(response.status.code).toBe('0');
+describe('Test postData function', () => {
+    test('The postData function test', async () => {
+        fetch.mockResolvedValue(
+            {
+            status: 
+                { code: '0', msg: 'OK', credits: '1', remaining_credits: '19863' }
+        })
+        expect(postData('/process',{URL:'false', currentInput:"The quick brown fox jumped over the lazy dog"})).toBeDefined();
+    })
 })

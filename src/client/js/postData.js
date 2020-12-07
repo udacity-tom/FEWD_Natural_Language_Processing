@@ -3,6 +3,7 @@ const postData = async (url = '', data= {}) => {
     //Clears error and results
     Client.clearUI()
     const response = await fetch('http://localhost:8081'+url,{
+        
         method: 'POST',
         mode: 'cors',
         credentials: 'same-origin',

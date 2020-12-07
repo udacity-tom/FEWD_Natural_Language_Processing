@@ -1,4 +1,4 @@
-
+import 'regenerator-runtime/runtime';
 //import Js functions used in app
 import { handleSubmit } from './js/formHandler'
 import { changeInputArea } from './js/changeInputType'

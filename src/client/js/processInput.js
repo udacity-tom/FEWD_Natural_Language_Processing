@@ -18,6 +18,7 @@ const processInput = async () => {
         console.log("URL valid!")
     }
     const returnedData = await Client.postData('/process',{URL:currentInput.checked, currentInput:inputToAnalyse.value});
+    console.log("returnedData", returnedData)
     return returnedData    
 }
 

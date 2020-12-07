@@ -1,11 +1,10 @@
 import { handleSubmit } from "../src/client/js/formHandler"
-import 'regenerator-runtime/runtime';
+
 const fetch = require('node-fetch') 
-// { node-fetch } from "../node_modules/node-fetch"
 
 jest.mock('node-fetch')
 
-describe("Takes click event, Processes input (checks validity-http,etc), Posts to server, Gets data from Server, Checks data validity, passes to updateUI, finish", () => {
+describe("Processes input", () => {
     test("Runs, fetch request, fetch response-this is what needs to be tested", async () =>{
         fetch.mockResolvedValue({
             'status': { 'code': "0", 'msg': "OK", 'credits': "1", 'remaining_credits': "19863" }
@@ -14,14 +13,9 @@ describe("Takes click event, Processes input (checks validity-http,etc), Posts t
         
         document.body.innerHTML = `
         <input type="checkbox" id="inputAreaType" onclick="Client.changeInputArea()" value="true">
-
-
         <textarea id="url" class="inputURL" name="input" rows="5" cols="60" placeholder="http://URL-Uniform-Resource-Locator" style="display: block;">https://www.theguardian.com</textarea>`;
-
-
-        const testHandleSubmit = handleSubmit();
         
-        expect(testHandleSubmit).toBeUndefined()
+        expect(handleSubmit()).toBeUndefined()
     })
 })
 
