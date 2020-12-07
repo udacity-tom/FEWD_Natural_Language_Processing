@@ -1,5 +1,5 @@
 function handleSubmit(event) {
-    event.preventDefault()
+    // event.preventDefault()
     
 //function to steer javascript actions on submission, check for errors at input and on submission
 // function processClick() {

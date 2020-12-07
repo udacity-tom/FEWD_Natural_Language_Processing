@@ -5,8 +5,8 @@ const fetch = require('node-fetch')
 
 jest.mock('node-fetch')
 
-describe("Takes click event, Processes input (checks validity-http,etc), Posts to server, Gets data from Server, Checks data validity, passes to updateUI, finish", () => {
-    test("Runs, fetch request, fetch response-this is what needs to be tested", async () =>{
+describe("Processes input", () => {
+    test("Runs, fetch request, fetch response", async () =>{
         fetch.mockResolvedValue({
             'status': { 'code': "0", 'msg': "OK", 'credits': "1", 'remaining_credits': "19863" }
           }
